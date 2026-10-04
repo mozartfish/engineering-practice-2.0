@@ -1,0 +1,30 @@
+[project]
+name = "engineering-practice-2-0"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Pranav Rajan", email = "rajan.pranav320@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "ipywidgets>=8.1.9",
+    "jupyterlab>=4.6.4",
+    "librosa>=1.0.0",
+    "music21>=10.5.0",
+    "nbconvert>=7.17.1",
+    "pandas>=3.0.6",
+    "python-dotenv>=1.2.4",
+    "scipy>=1.18.1",
+    "torch>=2.14.1",
+    "torchaudio>=2.11.0",
+    "torchcodec>=0.17.0",
+    "tqdm>=4.70.1",
+]
+
+[project.scripts]
+engineering-practice-2-0 = "engineering_practice_2_0:main"
+
+[build-system]
+requires = ["uv_build>=0.12.22,<0.13.0"]
+build-backend = "uv_build"
