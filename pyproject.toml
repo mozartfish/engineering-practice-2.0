@@ -11,6 +11,7 @@ dependencies = [
     "ipywidgets>=8.1.9",
     "jupyterlab>=4.6.4",
     "librosa>=1.0.0",
+    "matplotlib>=3.11.2",
     "music21>=10.5.0",
     "nbconvert>=7.17.1",
     "nbstripout>=0.9.1",
