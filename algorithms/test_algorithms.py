@@ -54,6 +54,7 @@ def insertionSort(array):
 
     return array
 
+
 def isPalindrome(s):
     if len(s) <= 1:
         return True
@@ -67,6 +68,49 @@ def isPalindrome(s):
 
     return isPalindrome(s)
 
+
+def merge(array, start, mid, end):
+    lowHalf = []
+    highHalf = []
+
+    for i in range(start, mid + 1):
+        lowHalf.append(array[i])
+    for j in range(mid + 1, end + 1):
+        highHalf.append(array[j])
+
+    i = 0
+    j = 0
+    k = start
+    while i < len(lowHalf) and j < len(highHalf):
+        if lowHalf[i] < highHalf[j]:
+            array[k] = lowHalf[i]
+            i += 1
+        else:
+            array[k] = highHalf[j]
+            j += 1
+
+        k += 1
+
+    while i < len(lowHalf):
+        array[k] = lowHalf[i]
+        i += 1
+        k += 1
+    while j < len(highHalf):
+        array[k] = highHalf[j]
+        j += 1
+        k += 1
+
+    return array
+
+
+def mergeSort(array, start, end):
+    if end <= start:
+        return array
+
+    mid = start + (end - start) // 2
+    mergeSort(array, start, mid)
+    mergeSort(array, mid + 1, end)
+    return merge(array, start, mid, end)
 
 def test_binarySearch():
     primes = [
@@ -110,24 +154,31 @@ def test_insertionSort():
     array = [22, 11, 99, 88, 9, 7, 42]
     assert insertionSort(array) == [7, 9, 11, 22, 42, 88, 99]
 
+
 def test_iterativeFactorial():
-    assert iterativeFactorial(0) == 1 
-    assert iterativeFactorial(3) == 6 
-    assert iterativeFactorial(4) == 24 
+    assert iterativeFactorial(0) == 1
+    assert iterativeFactorial(3) == 6
+    assert iterativeFactorial(4) == 24
     assert iterativeFactorial(5) == 120
 
+
 def test_recursiveFactorial():
-    assert recursiveFactorial(0) == 1 
-    assert recursiveFactorial(3) == 6 
-    assert recursiveFactorial(4) == 24 
-    assert recursiveFactorial(5) == 120 
+    assert recursiveFactorial(0) == 1
+    assert recursiveFactorial(3) == 6
+    assert recursiveFactorial(4) == 24
+    assert recursiveFactorial(5) == 120
+
 
 def test_isPalindrome():
-    assert isPalindrome("racecar") == True 
-    assert isPalindrome("motor") == False 
-    assert isPalindrome("rotor") == True 
-    assert isPalindrome("toys") == False 
+    assert isPalindrome("racecar") == True
+    assert isPalindrome("motor") == False
+    assert isPalindrome("rotor") == True
+    assert isPalindrome("toys") == False
 
+
+def test_mergeSort():
+    array = [3, 7, 12, 14, 2, 6, 9, 11]
+    assert mergeSort(array, 0, len(array) - 1) == [2, 3, 6, 7, 9, 11, 12, 14]
 
 
 if __name__ == "__main__":
@@ -135,6 +186,7 @@ if __name__ == "__main__":
     test_binarySearch()
     test_selectionSort()
     test_insertionSort()
-    test_iterativeFactorial() 
+    test_iterativeFactorial()
     test_recursiveFactorial()
     test_isPalindrome()
+    test_mergeSort()
